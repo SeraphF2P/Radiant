@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import c from "tailwindcss/colors";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -12,10 +10,13 @@ module.exports = {
         xsm: "420px",
         xs: "576px",
       },
-      "aaaa": {
-        "scroll-behavior": "smooth",
-        "-ms-overflow-style": "none",
-        "scrollbar-width": "none",
+      colors: {
+        primary: {
+          "300": "hsl(25, 56%, 75%)",
+          "200": "hsl(25, 56%, 85%)",
+          "50": "hsl(25, 56%, 95%)",
+        },
+        secondery: "rgb(92, 0, 0)"
       },
       gridAutoColumns: {
         fluid: "repeat(auto-fit,minmax(0,1fr))",
@@ -30,7 +31,6 @@ module.exports = {
       },
       animation: {
         reset: "reset var(--reset-duration) infinite var(--reset-delay)",
-        toast: "toast 5s ease-in-out forwards",
       },
       keyframes: {
         reset: {
@@ -43,26 +43,8 @@ module.exports = {
               "translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));",
           },
         },
-        toast: {
-          "0%": {
-            translate:
-              "0 0",
-          },
-          "10%": {
-            translate:
-              "-1000px 0",
-          },
-          "90%": {
-            translate:
-              "-1000px 0",
-          },
-          "100%": {
-            translate:
-              "0 0",
-          },
-        },
       },
-      
+
     },
   },
   plugins: [

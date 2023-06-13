@@ -9,29 +9,37 @@ import Btn from "../components/Btn";
 
 const Landing: FC = () => {
 	const { scrollYProgress } = useScroll();
-	const scale = useTransform(scrollYProgress, [0, 0.5], [80, 200]);
+	const scale = useTransform(scrollYProgress, [0, 0.8], [80, 200]);
 	return (
-		<section className=" relative h-[90vh] overflow-hidden">
+		<section className=" sticky top-0  h-[90vh] overflow-hidden">
 			<m.div
 				style={{
 					scale: useMotionTemplate`${scale}%`,
 				}}
-				className=" absolute inset-0  m-auto flex  max-w-screen-md flex-col items-center  justify-center  rounded-[64px] bg-sky-400  duration-300  "
+				className=" absolute inset-0  m-auto flex max-w-screen-md  flex-col items-center justify-center  overflow-hidden  rounded-[64px]  duration-300  "
 			>
-				<div className=" flex max-w-sm flex-col justify-center ">
-					<h1 className="text-center text-5xl">
-						Elevate and Discover Radiant Skin.
-					</h1>
-					<div className=" flex w-full justify-between p-2">
-						<Btn className="px-4 py-2" shape="pill" variant="fill">
-							Shop now
-						</Btn>
-						<Btn className="px-4 py-2" shape="pill" variant="outline">
-							Learn more
-						</Btn>
-					</div>
-				</div>
+				<video
+					autoPlay
+					muted
+					loop
+					className="  h-full w-full  object-cover  "
+					src="/lorem-ipsum.mp4"
+				></video>
+				<div className="absolute inset-0 bg-secondery/30   bg-blend-overlay" />
 			</m.div>
+			<div className=" absolute inset-0 m-auto flex max-w-sm flex-col justify-center gap-4 px-8 ">
+				<h1 className=" text-center text-3xl sm:text-5xl">
+					Elevate and Discover Radiant Skin.
+				</h1>
+				<div className=" flex w-full justify-between p-2">
+					<Btn className="px-4 py-2" shape="pill" variant="fill">
+						Shop now
+					</Btn>
+					<Btn className="px-4 py-2" shape="pill" variant="outline">
+						Learn more
+					</Btn>
+				</div>
+			</div>
 		</section>
 	);
 };

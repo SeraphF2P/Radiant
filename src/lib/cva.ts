@@ -9,27 +9,27 @@ export const variants = cva(
   {
     variants: {
       variant: {
-        fill: " bg-teal-500 hover:bg-teal-400 text-white  active:bg-teal-500 shadow-sm shadow-inherit active:shadow-inner",
+        fill: " bg-stone-900 hover:bg-primary-300 text-white  active:bg-stone-900 shadow-sm shadow-inherit active:shadow-inner",
         outline:
-          " ring-solid ring-teal-500  active:bg-teal-500 bg-transparent  shadow-sm  shadow-inherit  ring-4 active:shadow-inner  ",
+          " border-solid border-stone-900 hover:bg-primary-300  active:bg-stone-900 bg-transparent  shadow-sm  shadow-inherit  border-2 active:shadow-inner  ",
         ghost:
-          "  hover:bg-teal-500/80  active:bg-teal-500 hover:text-white  shadow-sm  active:shadow-inner",
+          "  hover:bg-stone-900/80  active:bg-stone-900 hover:text-white  shadow-sm  active:shadow-inner",
       },
       shape: {
         pill: "rounded-full",
-        circle: "rounded-full aspect-square",
+        circle: "rounded-full ",
         rect: "rounded-sm",
       },
       disable: {
         default:
-          " disabled:text-gray-500   disabled:bg-teal-500-muted disabled:ring-gray-400 ",
+          " disabled:text-gray-500   disabled:bg-stone-900-muted disabled:ring-gray-400 ",
         skelaton:
           "disabled:text-gray-400 disabled:ring-4 disabled:bg-gray-400 disabled:active:bg-transparent",
         link: "text-gray-400 ring-gray-400 active:bg-transparent hover:scale-100 cursor-auto",
       },
     },
     defaultVariants: {
-      shape: "rect",
+      shape: "pill",
       disable: "default",
     },
   }

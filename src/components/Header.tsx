@@ -1,12 +1,9 @@
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import Btn from "./Btn";
 
 const Header: FC = () => {
-	const [open, setOpen] = useState(false);
-	useEffect(() => {
-		if (window.screenY < 768) return setOpen(true);
-	}, []);
+	const [open, setOpen] = useState(window.innerWidth > 768 ? true : false);
 	return (
 		<header className="sticky top-0 z-20 w-full bg-stone-100   md:flex md:justify-between   ">
 			<Collapsible.Root open={open} onOpenChange={setOpen} asChild>
@@ -27,15 +24,13 @@ const Header: FC = () => {
 						</a>
 					</div>
 					<Collapsible.Content asChild>
-						<ul className=" flex h-72 w-full flex-col  items-center justify-around font-semibold text-stone-900  md:h-auto md:flex-row ">
-							<li>products</li>
-							<li>about us</li>
-							<li>
-								<Btn variant="fill" shape="pill" className="px-4 py-2">
-									contact us
-								</Btn>
-							</li>
-						</ul>
+						<div className=" flex h-72 w-full flex-col items-center  justify-evenly font-semibold text-stone-900  md:h-auto md:flex-row ">
+							<span>products</span>
+							<span>about us</span>
+							<Btn variant="fill" shape="pill" className=" px-4  py-2">
+								contact us
+							</Btn>
+						</div>
 					</Collapsible.Content>
 				</>
 			</Collapsible.Root>
