@@ -1,26 +1,65 @@
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { FC, useState } from "react";
 import Btn from "./Btn";
+import Icons from "./Icons";
+import {
+	useScroll,
+	useTransform,
+	motion as m,
+	useMotionTemplate,
+} from "framer-motion";
+import ToggleBtn from "./ToggleBtn";
 
 const Header: FC = () => {
 	const [open, setOpen] = useState(window.innerWidth > 768 ? true : false);
+	const { scrollY } = useScroll();
+	const shadow = useTransform(
+		scrollY,
+		[0, window.innerHeight],
+		["none", "0 1px 3px 0 rgb(0 0 0 / 0.2)"]
+	);
 	return (
-		<header className="sticky top-0 z-20 w-full bg-stone-100   md:flex md:justify-between   ">
+		<m.header
+			style={{ boxShadow: useMotionTemplate`${shadow}` }}
+			className="sticky top-0 z-20 w-full bg-stone-100  shadow  md:flex md:justify-between   "
+		>
 			<Collapsible.Root open={open} onOpenChange={setOpen} asChild>
 				<>
 					<div className=" min-h-20 relative  flex w-full  flex-row-reverse items-center justify-between p-4  md:w-auto">
 						<Collapsible.Trigger asChild>
-							<Btn className=" md:hidden " variant="fill">
-								{open ? "close" : "open"}
-							</Btn>
+							<ToggleBtn
+								style={{
+									transform: "none",
+									transformOrigin: "50% 50% 0px",
+									opacity: 1,
+								}}
+								className=" h-[28px] w-[28px] flex-col  gap-1 md:hidden "
+								variant="fill"
+							>
+								{(isToggled) => (
+									<>
+										<div
+											className={`${
+												isToggled && "translate-y-1.5 rotate-45 "
+											} h-0.5 w-[18px] rounded bg-stone-100 transition-transform duration-500 `}
+										/>
+										<div
+											className={`${
+												isToggled ? "w-0 " : "w-3.5"
+											} h-0.5 rounded bg-stone-100 transition-[width] duration-500 `}
+										/>
+										<div
+											className={`${
+												isToggled && "w-[18px] -translate-y-1.5 -rotate-45"
+											} h-0.5 w-2.5 rounded bg-stone-100 transition-[transform_width]  duration-500 `}
+										/>
+									</>
+								)}
+							</ToggleBtn>
 						</Collapsible.Trigger>
 
 						<a className=" relative h-10 w-40  " href="#">
-							<img
-								className=" absolute left-0 top-0 h-full w-full max-w-full  object-cover"
-								src="https://picsum.photos/300/200.webp"
-								alt=""
-							/>
+							<Icons.logo />
 						</a>
 					</div>
 					<Collapsible.Content asChild>
@@ -34,7 +73,7 @@ const Header: FC = () => {
 					</Collapsible.Content>
 				</>
 			</Collapsible.Root>
-		</header>
+		</m.header>
 	);
 };
 

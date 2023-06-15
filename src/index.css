@@ -2,19 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-h2{
-  @apply text-5xl;
+h2 {
+	@apply text-5xl;
 }
-h3{
-  @apply text-3xl;
+h3 {
+	@apply text-3xl;
 }
-
+h4 {
+	@apply text-xl;
+}
 
 .remove-scroll-bar {
 	scroll-behavior: smooth;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
-  
 }
 .remove-scroll-bar::-webkit-scrollbar {
 	display: none;

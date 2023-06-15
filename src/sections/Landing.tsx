@@ -6,12 +6,13 @@ import {
 } from "framer-motion";
 import { FC } from "react";
 import Btn from "../components/Btn";
+import Icons from "../components/Icons";
 
 const Landing: FC = () => {
 	const { scrollYProgress } = useScroll();
 	const scale = useTransform(scrollYProgress, [0, 0.8], [80, 200]);
 	return (
-		<section className=" sticky top-0  h-[90vh] overflow-hidden">
+		<section  className=" sticky top-0  h-[90vh] overflow-hidden">
 			<m.div
 				style={{
 					scale: useMotionTemplate`${scale}%`,
@@ -32,8 +33,13 @@ const Landing: FC = () => {
 					Elevate and Discover Radiant Skin.
 				</h1>
 				<div className=" flex w-full justify-between p-2">
-					<Btn className="px-4 py-2" shape="pill" variant="fill">
+					<Btn
+						className="gap-1 whitespace-nowrap px-4 py-2  "
+						shape="pill"
+						variant="fill"
+					>
 						Shop now
+						<Icons.rightArrow className="  h-6 w-6 fill-slate-50" />
 					</Btn>
 					<Btn className="px-4 py-2" shape="pill" variant="outline">
 						Learn more

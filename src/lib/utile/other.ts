@@ -8,14 +8,14 @@ export function sleep(duration: number | undefined) {
     })
 }
 
-export function memoize(cb: (arg0: any) => any) {
-    const cache = new Map()
-    return (...args: any) => {
-        const key = JSON.stringify(args)
-        if (cache.has(key)) return cache.get(key)
+// export function memoize(cb: (arg0: any) => any) {
+//     const cache = new Map()
+//     return (...args: any) => {
+//         const key = JSON.stringify(args)
+//         if (cache.has(key)) return cache.get(key)
 
-        const result = cb(...args)
-        cache.set(key, result)
-        return result
-    }
-}
+//         const result = cb(...args)
+//         cache.set(key, result)
+//         return result
+//     }
+// }

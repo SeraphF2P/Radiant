@@ -1,85 +1,146 @@
 import { useResizeObserver } from "@mantine/hooks";
 import { AnimatePresence, motion as m } from "framer-motion";
-import { FC } from "react";
+import { FC, useState } from "react";
 import Btn from "../components/Btn";
 import useCarousel from "../hooks/useCarousel";
+import { formatCurrency } from "../lib/utile/formatters";
 
+const images = [
+	{
+		id: 1,
+		src: "https://picsum.photos/300/600?random=5.webp",
+		name: "Radiant Eye Cream",
+		price: 40,
+	},
+	{
+		id: 2,
+		src: "https://picsum.photos/300/600?random=6.webp",
+		name: "Radiant Renewal Night Cream",
+		price: 50,
+	},
+	{
+		id: 3,
+		src: "https://picsum.photos/300/600?random=7.webp",
+		name: "Radiant Glow Moisturizing Cream",
+		price: 30,
+	},
+	{
+		id: 4,
+		src: "https://picsum.photos/300/600?random=8.webp",
+		name: "Radiant Hydrating Serum",
+		price: 45,
+	},
+	{
+		id: 5,
+		src: "https://picsum.photos/300/600?random=9.webp",
+		name: "Radiant Firming Mask",
+		price: 35,
+	},
+	{
+		id: 6,
+		src: "https://picsum.photos/300/600?random=10.webp",
+		name: "Radiant Lip Treatment",
+		price: 25,
+	},
+];
 const OurProducts: FC = () => {
-	const emtyArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-	const { incr, decr, dir, count } = useCarousel(emtyArray);
+	const numOfCards =
+		window.innerWidth > 1024 ? 3 : window.innerWidth > 768 ? 2 : 1;
+	const { incr, decr, dir, activeIndexs } = useCarousel(
+		images.length,
+		numOfCards
+	);
+	const [isAnimating, setIsAnimating] = useState(false);
 	const [ref, { width }] = useResizeObserver();
 	const cardVarient = {
 		entry: (dir: number) => ({
-			x: dir * width + "%",
+			x: (dir * width) / numOfCards,
 		}),
 		center: { x: 0 },
 		exit: (dir: number) => ({
-			x: dir * -width + "%",
+			x: (dir * -width) / numOfCards,
 		}),
 	};
 
 	return (
-		<section className=" relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4 bg-primary-50  ">
+		<section className=" relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4 overflow-hidden bg-primary-50  ">
 			<h2>Our Products</h2>
-			<div className=" flex w-full justify-between  bg-red-400">
+			<div className=" flex w-full justify-between px-2  sm:px-4  ">
 				<Btn className=" bg-stone-100 px-4 py-2">view all</Btn>
 				<div className=" flex items-center  gap-2">
 					<Btn
-						onPointerDown={() => {
+						onClick={() => {
+							setIsAnimating(true);
 							decr();
 						}}
-						className=" w-9  text-3xl"
+						className="   text-3xl"
 						variant="fill"
 						shape="circle"
+						disabled={isAnimating}
 					>
-						{"<"}
+						<img
+							width="24"
+							height="24"
+							src="https://framerusercontent.com/images/6tTbkXggWgQCAJ4DO2QEdXXmgM.svg"
+							alt="Back Arrow"
+						/>
 					</Btn>
 					<Btn
-						onPointerDown={() => {
+						onClick={() => {
+							setIsAnimating(true);
 							incr();
 						}}
-						className=" w-9 text-3xl"
+						className="  text-3xl"
 						variant="fill"
 						shape="circle"
+						disabled={isAnimating}
 					>
-						{">"}
+						<img
+							width="24"
+							height="24"
+							src="https://framerusercontent.com/images/11KSGbIZoRSg4pjdnUoif6MKHI.svg"
+							alt="Next Arrow"
+						/>
 					</Btn>
 				</div>
 			</div>
-
-			<m.ul
+			<ul
 				ref={ref}
-				layout
-				className="  relative flex min-h-[calc(100vh-160px)] w-full items-center justify-center  gap-4 overflow-hidden bg-sky-500 p-8"
+				className=" flex min-h-[calc(100vh-240px)]  w-full  items-center justify-around   gap-4    overflow-hidden     px-8 transition-transform"
 			>
-				<AnimatePresence custom={dir} mode="popLayout" presenceAffectsLayout>
-					{[...emtyArray.slice(count, count + 2)].map((product) => {
+				<AnimatePresence
+					onExitComplete={() => setIsAnimating(false)}
+					initial={false}
+					custom={dir}
+					mode="popLayout"
+				>
+					{activeIndexs.map((act, index) => {
+						const product = images[act];
 						return (
 							<m.li
-								key={product}
-								custom={dir}
 								variants={cardVarient}
+								layout="position"
 								initial="entry"
 								animate="center"
 								exit="exit"
-								layout="position"
+								custom={dir}
+								key={product.id + "-" + index}
 								transition={{
 									duration: 1,
 									ease: "linear",
 									layout: { duration: 1, ease: "linear" },
 								}}
-								className=" relative flex  flex-col justify-between gap-4  rounded-2xl bg-green-400 p-16"
+								className=" relative flex h-[400px]  w-full  flex-col justify-between gap-4  rounded-2xl bg-stone-50 p-8 shadow sm:p-12"
 							>
-								{product}
-								<h2 className=" h-[70px]">{product.name || "product"}</h2>
+								<h4 className=" h-[70px]">{product.name || "product"}</h4>
 								<div className=" text-2xl font-semibold text-primary-300">
-									{product.price || "price"}
+									{formatCurrency(product.price) || "price"}
 								</div>
-								<div className="relative h-40 w-60 overflow-hidden rounded-md">
+								<div className="relative h-80 w-full overflow-hidden rounded-md">
 									<img
-										className="absolute inset-0 bg-red-600 object-cover"
-										src=""
-										alt=""
+										className="absolute h-full w-full object-cover"
+										src={product.src}
+										alt={product.name}
 									/>
 								</div>
 								<div className=" flex w-full items-center justify-between">
@@ -97,7 +158,7 @@ const OurProducts: FC = () => {
 						);
 					})}
 				</AnimatePresence>
-			</m.ul>
+			</ul>
 		</section>
 	);
 };

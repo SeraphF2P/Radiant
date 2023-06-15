@@ -3,7 +3,7 @@ import { cn, variants } from "../lib/cva";
 import Btn, { BtnProps } from "./Btn";
 
 interface ToggleBtnType extends BtnProps {
-	whenToggled: string;
+	whenToggled?: string;
 	toggleState?: boolean;
 }
 
