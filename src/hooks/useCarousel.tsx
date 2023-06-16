@@ -5,16 +5,17 @@ export function useCarousel(arrayLength: number, numOfSlides = 1) {
 	const [count, setCount] = useState(0);
 	const prevCount = usePrevious(count);
 	const dir = count > (prevCount ?? 0) ? 1 : -1;
+
 	const incr = () => {
 		if (count < arrayLength - 1) {
-			setCount(count + 1);
+			setCount((prev) => prev + 1);
 		} else {
 			setCount(0);
 		}
 	};
 	const decr = () => {
 		if (count > 0) {
-			setCount(count - 1);
+			setCount((prev) => prev - 1);
 		} else {
 			setCount(arrayLength - 1);
 		}
@@ -37,7 +38,7 @@ export function useCarousel(arrayLength: number, numOfSlides = 1) {
 		return resualt;
 	}, [count, arrayLength, numOfSlides]);
 
-	return { incr, decr, dir, count, activeIndexs };
+	return { incr, decr, dir, count, activeIndexs, prevCount };
 }
 
 export default useCarousel;

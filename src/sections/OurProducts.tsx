@@ -46,12 +46,15 @@ const images = [
 const OurProducts: FC = () => {
 	const numOfCards =
 		window.innerWidth > 1024 ? 3 : window.innerWidth > 768 ? 2 : 1;
+	const [ref, { width }] = useResizeObserver();
+	const spacing = 32;
+	const cardWidth = width / numOfCards - spacing;
+	const fullCardWidth = cardWidth + spacing;
 	const { incr, decr, dir, activeIndexs } = useCarousel(
 		images.length,
 		numOfCards
 	);
 	const [isAnimating, setIsAnimating] = useState(false);
-	const [ref, { width }] = useResizeObserver();
 	const cardVarient = {
 		entry: (dir: number) => ({
 			x: (dir * width) / numOfCards,
@@ -104,35 +107,42 @@ const OurProducts: FC = () => {
 					</Btn>
 				</div>
 			</div>
-			<ul
+			<m.ul
 				ref={ref}
-				className=" flex min-h-[calc(100vh-240px)]  w-full  items-center justify-around   gap-4    overflow-hidden     px-8 transition-transform"
+				layout
+				layoutRoot
+				className="   min-h-[calc(100vh-240px)] w-full  overflow-hidden px-4  "
 			>
 				<AnimatePresence
 					onExitComplete={() => setIsAnimating(false)}
 					initial={false}
 					custom={dir}
-					mode="popLayout"
 				>
 					{activeIndexs.map((act, index) => {
 						const product = images[act];
 						return (
 							<m.li
-								variants={cardVarient}
 								layout="position"
+								key={act}
+								variants={cardVarient}
 								initial="entry"
 								animate="center"
 								exit="exit"
 								custom={dir}
-								key={product.id + "-" + index}
+								style={{
+									width: cardWidth,
+									left: index * fullCardWidth,
+									marginInline: spacing / 2,
+								}}
 								transition={{
 									duration: 1,
 									ease: "linear",
-									layout: { duration: 1, ease: "linear" },
 								}}
-								className=" relative flex h-[400px]  w-full  flex-col justify-between gap-4  rounded-2xl bg-stone-50 p-8 shadow sm:p-12"
+								className=" absolute inline-flex h-[400px]  flex-col justify-between gap-4  rounded-2xl bg-stone-50 p-8 shadow sm:p-12"
 							>
-								<h4 className=" h-[70px]">{product.name || "product"}</h4>
+								<h4 className=" line-clamp-1 h-[70px] ">
+									{product.name || "product"}
+								</h4>
 								<div className=" text-2xl font-semibold text-primary-300">
 									{formatCurrency(product.price) || "price"}
 								</div>
@@ -158,7 +168,7 @@ const OurProducts: FC = () => {
 						);
 					})}
 				</AnimatePresence>
-			</ul>
+			</m.ul>
 		</section>
 	);
 };

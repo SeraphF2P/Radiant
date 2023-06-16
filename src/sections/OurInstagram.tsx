@@ -1,7 +1,12 @@
-import { useInterval } from "@mantine/hooks";
-import { AnimatePresence, motion as m } from "framer-motion";
-import { FC, useEffect } from "react";
+import {
+	AnimatePresence,
+	circInOut,
+	motion as m,
+	useAnimationControls,
+} from "framer-motion";
+import { FC, useEffect, useState } from "react";
 import Btn from "../components/Btn";
+import { useInterval, useResizeObserver } from "@mantine/hooks";
 import useCarousel from "../hooks/useCarousel";
 
 const images = [
@@ -11,59 +16,49 @@ const images = [
 	"https://picsum.photos/300/600?random=8.webp",
 	"https://picsum.photos/300/600?random=9.webp",
 ];
-
-const timer = 4;
-const numOfSlides = 3;
-const cardWidth = 240;
+const timer = 10;
 const spacing = 32;
-const fullCardWidth = cardWidth + spacing;
+const cardWidth = 350;
+const containerWidth = 1000;
+const numOfSlides = images.length;
+const sliderWidth = (cardWidth + spacing) * numOfSlides;
+const fillerWidth = (sliderWidth - containerWidth) / 2;
 
 const OurInstagram: FC = () => {
-	const { incr, activeIndexs } = useCarousel(images.length, numOfSlides);
-	const interval = useInterval(incr, timer * 1000);
-
-	useEffect(() => {
-		interval.start();
-		return interval.stop;
-	}, [interval]);
-
 	return (
-		<section className=" relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4 overflow-hidden  bg-slate-100   ">
+		<section className=" relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4   bg-slate-100   ">
 			<h2>our instagram</h2>
-			<m.div
-				layout
-				layoutRoot
-				className="relative  h-[60vh]  w-full overflow-hidden "
-			>
-				<AnimatePresence initial={false}>
-					{activeIndexs.map((act, index) => {
+			<div className=" relative flex h-[60vh] w-full items-center overflow-hidden   ">
+				<div
+					style={{ width: sliderWidth }}
+					className="  relative  flex  items-center"
+				>
+					{images.map((image, index) => {
 						return (
 							<m.div
-								key={act}
-								initial={{ x: fullCardWidth }}
-								animate={{ x: 0 }}
-								exit={{ x: -fullCardWidth }}
-								layout="position"
-								style={{
-									left: spacing / 2 + index * fullCardWidth,
-								}}
+								key={image}
+								initial={{ x: sliderWidth - fillerWidth }}
+								animate={{ x: -fillerWidth }}
 								transition={{
 									duration: timer,
 									ease: "linear",
+									repeat: Infinity,
+									repeatType: "loop",
+									delay: (index * timer) / numOfSlides,
 								}}
-								className=" absolute -translate-y-1/2 top-1/2  mx-4 inline-block h-60  w-60    overflow-hidden rounded bg-sky-400"
+								className=" absolute left-0 h-80 w-[350px] overflow-hidden rounded-xl   bg-primary-300 "
 							>
 								<img
-									className="absoulote h-full w-full object-cover"
-									src={images[act]}
+									className="absoulote left-0 h-full w-full object-cover"
+									src={image}
 									alt=""
 								/>
 							</m.div>
 						);
 					})}
-				</AnimatePresence>
-				<div className=" pointer-events-none absolute inset-0 bg-gradient-to-r from-stone-100 from-[1%] via-transparent  to-stone-100    to-[99%]"></div>
-			</m.div>
+				</div>
+				<div className=" pointer-events-none absolute left-0 top-0 h-full w-full bg-gradient-to-r from-stone-100 from-[1%] via-transparent  to-stone-100    to-[99%]"></div>
+			</div>
 			<Btn variant="fill" shape="pill" className="px-4 py-2">
 				follow us @instagram
 			</Btn>
