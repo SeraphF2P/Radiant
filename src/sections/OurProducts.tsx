@@ -4,41 +4,43 @@ import { FC, useState } from "react";
 import Btn from "../components/Btn";
 import useCarousel from "../hooks/useCarousel";
 import { formatCurrency } from "../lib/utile/formatters";
+import { Link } from "react-router-dom";
+import { variants } from "../lib/cva";
 
-const images = [
+const products = [
 	{
 		id: 1,
-		src: "https://picsum.photos/300/600?random=5.webp",
+		src: "/products/ourproducts-product-1.webp",
 		name: "Radiant Eye Cream",
 		price: 40,
 	},
 	{
 		id: 2,
-		src: "https://picsum.photos/300/600?random=6.webp",
+		src: "/products/ourproducts-product-2.webp",
 		name: "Radiant Renewal Night Cream",
 		price: 50,
 	},
 	{
 		id: 3,
-		src: "https://picsum.photos/300/600?random=7.webp",
+		src: "/products/ourproducts-product-3.webp",
 		name: "Radiant Glow Moisturizing Cream",
 		price: 30,
 	},
 	{
 		id: 4,
-		src: "https://picsum.photos/300/600?random=8.webp",
+		src: "/products/ourproducts-product-4.webp",
 		name: "Radiant Hydrating Serum",
 		price: 45,
 	},
 	{
 		id: 5,
-		src: "https://picsum.photos/300/600?random=9.webp",
+		src: "/products/ourproducts-product-5.webp",
 		name: "Radiant Firming Mask",
 		price: 35,
 	},
 	{
 		id: 6,
-		src: "https://picsum.photos/300/600?random=10.webp",
+		src: "/products/ourproducts-product-6.webp",
 		name: "Radiant Lip Treatment",
 		price: 25,
 	},
@@ -51,7 +53,7 @@ const OurProducts: FC = () => {
 	const cardWidth = width / numOfCards - spacing;
 	const fullCardWidth = cardWidth + spacing;
 	const { incr, decr, dir, activeIndexs } = useCarousel(
-		images.length,
+		products.length,
 		numOfCards
 	);
 	const [isAnimating, setIsAnimating] = useState(false);
@@ -66,10 +68,15 @@ const OurProducts: FC = () => {
 	};
 
 	return (
-		<section className=" relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4 overflow-hidden bg-primary-50  ">
+		<section className=" lg:px-8 relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4 overflow-hidden bg-primary-50  ">
 			<h2>Our Products</h2>
 			<div className=" flex w-full justify-between px-2  sm:px-4  ">
-				<Btn className=" bg-stone-100 px-4 py-2">view all</Btn>
+				<Link
+					to="productspage"
+					className={variants({ className: "bg-stone-100 px-4 py-2 shadow" })}
+				>
+					view all
+				</Link>
 				<div className=" flex items-center  gap-2">
 					<Btn
 						onClick={() => {
@@ -119,7 +126,7 @@ const OurProducts: FC = () => {
 					custom={dir}
 				>
 					{activeIndexs.map((act, index) => {
-						const product = images[act];
+						const product = products[act];
 						return (
 							<m.li
 								layout="position"
@@ -131,20 +138,18 @@ const OurProducts: FC = () => {
 								custom={dir}
 								style={{
 									width: cardWidth,
-									left: index * fullCardWidth,
+									left: index * fullCardWidth +spacing/2 ,
 									marginInline: spacing / 2,
 								}}
 								transition={{
 									duration: 1,
 									ease: "linear",
 								}}
-								className=" absolute inline-flex h-[400px]  flex-col justify-between gap-4  rounded-2xl bg-stone-50 p-8 shadow sm:p-12"
+								className=" absolute inline-flex h-[70%]   flex-col justify-between gap-4  rounded-2xl bg-stone-50 p-8 shadow sm:p-12"
 							>
-								<h4 className=" line-clamp-1 h-[70px] ">
-									{product.name || "product"}
-								</h4>
+								<h4 className=" line-clamp-1 h-[70px] ">{product.name}</h4>
 								<div className=" text-2xl font-semibold text-primary-300">
-									{formatCurrency(product.price) || "price"}
+									{formatCurrency(product.price)}
 								</div>
 								<div className="relative h-80 w-full overflow-hidden rounded-md">
 									<img

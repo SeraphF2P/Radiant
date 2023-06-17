@@ -1,20 +1,13 @@
-import {
-	AnimatePresence,
-	circInOut,
-	motion as m,
-	useAnimationControls,
-} from "framer-motion";
-import { FC, useEffect, useState } from "react";
+import {motion as m} from "framer-motion";
+import { FC } from "react";
 import Btn from "../components/Btn";
-import { useInterval, useResizeObserver } from "@mantine/hooks";
-import useCarousel from "../hooks/useCarousel";
 
 const images = [
-	"https://picsum.photos/300/600?random=5.webp",
-	"https://picsum.photos/300/600?random=6.webp",
-	"https://picsum.photos/300/600?random=7.webp",
-	"https://picsum.photos/300/600?random=8.webp",
-	"https://picsum.photos/300/600?random=9.webp",
+	"/products/homepage-ourinstagram-1.webp",
+	"/products/homepage-ourinstagram-2.webp",
+	"/products/homepage-ourinstagram-3.webp",
+	"/products/homepage-ourinstagram-4.jpg",
+	"/products/homepage-ourinstagram-5.webp",
 ];
 const timer = 10;
 const spacing = 32;

@@ -1,13 +1,14 @@
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { FC, useState } from "react";
-import Btn from "./Btn";
-import Icons from "./Icons";
 import {
-	useScroll,
-	useTransform,
-	motion as m,
-	useMotionTemplate,
+  motion as m,
+  useMotionTemplate,
+  useScroll,
+  useTransform,
 } from "framer-motion";
+import { FC, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { variants } from "../lib/cva";
+import Icons from "./Icons";
 import ToggleBtn from "./ToggleBtn";
 
 const Header: FC = () => {
@@ -21,7 +22,7 @@ const Header: FC = () => {
 	return (
 		<m.header
 			style={{ boxShadow: useMotionTemplate`${shadow}` }}
-			className="sticky top-0 z-20 w-full bg-stone-100  shadow  md:flex md:justify-between   "
+			className="sticky top-0 z-40 w-full bg-stone-100  shadow  md:flex md:justify-between   "
 		>
 			<Collapsible.Root open={open} onOpenChange={setOpen} asChild>
 				<>
@@ -58,17 +59,42 @@ const Header: FC = () => {
 							</ToggleBtn>
 						</Collapsible.Trigger>
 
-						<a className=" relative h-10 w-40  " href="#">
+						<NavLink className=" relative h-10 w-40  " to="/">
 							<Icons.logo />
-						</a>
+						</NavLink>
 					</div>
 					<Collapsible.Content asChild>
 						<div className=" flex h-72 w-full flex-col items-center  justify-evenly font-semibold text-stone-900  md:h-auto md:flex-row ">
-							<span>products</span>
-							<span>about us</span>
-							<Btn variant="fill" shape="pill" className=" px-4  py-2">
+							<NavLink
+								className={({ isActive }) =>
+									` ${
+										isActive ? "text-primary-300 " : "text-black"
+									}  text-xl capitalize transition-colors duration-500 hover:text-primary-300`
+								}
+								to="/productspage"
+							>
+								products
+							</NavLink>
+							<NavLink
+								className={({ isActive }) =>
+									` ${
+										isActive ? "text-primary-300 " : "text-black"
+									}  text-xl capitalize transition-colors duration-500 hover:text-primary-300`
+								}
+								to="/about"
+							>
+								about us
+							</NavLink>
+							<a
+								href="#contact"
+								className={variants({
+									variant: "fill",
+									shape: "pill",
+									className: "scroll-smooth  px-4 py-2",
+								})}
+							>
 								contact us
-							</Btn>
+							</a>
 						</div>
 					</Collapsible.Content>
 				</>

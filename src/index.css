@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+h1{
+  @apply text-6xl;
+}
 h2 {
 	@apply text-5xl;
 }
@@ -11,7 +14,9 @@ h3 {
 h4 {
 	@apply text-xl;
 }
-
+p{
+  @apply text-lg;
+}
 .remove-scroll-bar {
 	scroll-behavior: smooth;
 	-ms-overflow-style: none;
