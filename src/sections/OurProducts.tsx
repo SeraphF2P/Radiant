@@ -68,7 +68,7 @@ const OurProducts: FC = () => {
 	};
 
 	return (
-		<section className=" lg:px-8 relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4 overflow-hidden bg-primary-50  ">
+		<section className=" relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4 overflow-hidden bg-primary-50 lg:px-8  ">
 			<h2>Our Products</h2>
 			<div className=" flex w-full justify-between px-2  sm:px-4  ">
 				<Link
@@ -118,7 +118,7 @@ const OurProducts: FC = () => {
 				ref={ref}
 				layout
 				layoutRoot
-				className="   min-h-[calc(100vh-240px)] w-full  overflow-hidden px-4  "
+				className=" relative min-h-[calc(100vh-240px)]   w-full  -translate-x-1/2 overflow-hidden px-4  xl:max-w-screen-lg 2xl:max-w-screen-xl  "
 			>
 				<AnimatePresence
 					onExitComplete={() => setIsAnimating(false)}
@@ -138,22 +138,22 @@ const OurProducts: FC = () => {
 								custom={dir}
 								style={{
 									width: cardWidth,
-									left: index * fullCardWidth +spacing/2 ,
+									left: index * fullCardWidth + spacing / 2,
 									marginInline: spacing / 2,
 								}}
 								transition={{
 									duration: 1,
 									ease: "linear",
 								}}
-								className=" absolute inline-flex h-[70%]   flex-col justify-between gap-4  rounded-2xl bg-stone-50 p-8 shadow sm:p-12"
+								className=" absolute inline-flex  max-h-full   flex-col justify-between gap-4  rounded-2xl bg-stone-50 p-8 shadow sm:p-12"
 							>
-								<h4 className=" line-clamp-1 h-[70px] ">{product.name}</h4>
+								<h4 className="  h-[70px] ">{product.name}</h4>
 								<div className=" text-2xl font-semibold text-primary-300">
 									{formatCurrency(product.price)}
 								</div>
-								<div className="relative h-80 w-full overflow-hidden rounded-md">
+								<div className=" relative h-96 w-full overflow-hidden rounded-md md:h-80">
 									<img
-										className="absolute h-full w-full object-cover"
+										className="absolute h-full w-full max-w-full object-cover"
 										src={product.src}
 										alt={product.name}
 									/>

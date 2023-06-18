@@ -13,19 +13,19 @@ const HomePage: FC = () => {
 			initial="initial"
 			animate="animate"
 			exit="exit"
-      key="home page"
-       style={{
-        willChange:"opacity",
-      }}
-			className="  bg-stone-100"
+			key="home page"
+			style={{
+				willChange: "opacity",
+			}}
+			className="  overflow-hidden bg-stone-100 "
 		>
 			<Landing />
-			<section className="lg:px-8 relative w-full flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4  bg-slate-100  p-4 md:flex-row ">
+			<section className=" relative flex min-h-[calc(100vh-72px)] w-full flex-col items-center justify-center gap-4 bg-slate-100 p-4  md:flex-row  lg:px-16  ">
 				<div className=" relative h-72 w-full  overflow-hidden  rounded-[32px] bg-red-400 sm:h-[500px] md:w-1/3">
 					<img
 						className=" absolute h-full w-full object-cover"
 						src="/products/homepage-section-2.webp"
-						alt=""
+						alt="product-image"
 					/>
 				</div>
 				<div className="  flex w-full flex-col items-start gap-4 sm:h-[500px] sm:justify-around md:w-2/3">
@@ -46,7 +46,7 @@ const HomePage: FC = () => {
 					</Btn>
 				</div>
 			</section>
-			<section className="lg:px-8 relative flex  flex-col items-center justify-around  gap-8 bg-slate-100  p-4  py-8 ">
+			<section className=" relative flex flex-col items-center  justify-around gap-8 bg-slate-100  p-4 py-8  lg:px-16   ">
 				<blockquote className=" text-center">
 					"I would highly recommend the Radiant beauty product line to anyone
 					looking for high-quality, effective skincare products. They are truly
@@ -64,38 +64,47 @@ const HomePage: FC = () => {
 					<img
 						className=" absolute h-full w-full object-cover"
 						src="https://picsum.photos/200/200.webp"
-						alt=""
+						alt="product-image"
 					/>
 				</div>
 				<h3>Aria Patel</h3>
 			</section>
 			<OurProducts />
-			<section className="lg:px-8 relative flex min-h-[calc(100vh-72px)] items-center justify-center  bg-slate-100   ">
+			<section className=" relative flex min-h-[calc(100vh-72px)] items-center justify-center bg-slate-100 lg:px-16     ">
 				<div className=" mx-2 flex h-[80vh] w-full flex-col  overflow-hidden rounded-3xl bg-red-400 sm:mx-4 md:mx-0 md:flex-row md:rounded-none lg:rounded-[64px]">
-					<div className="  relative h-full w-full  bg-green-400">
+					<div className="  relative flex h-full  w-full flex-col items-center   justify-end bg-green-400 text-center">
 						<img
 							src="/products/homepage-section-4-1.webp"
-							className="   absolute    h-full w-full max-w-full  object-cover "
-							alt=""
+							alt="product-image"
+							className=" absolute bottom-0 h-full w-full object-cover object-[90%_80%] text-white "
 						/>
+						<h3 className=" relative p-4 font-semibold ">
+							Elevate your beauty routine.
+						</h3>
 					</div>
-					<div className="  relative h-full w-full  bg-amber-400">
+					<div className="  relative flex h-full  w-full flex-col items-center   bg-amber-400  text-center">
 						<img
 							src="/products/homepage-section-4-2.webp"
-							className="   absolute    h-full w-full max-w-full  object-cover "
-							alt=""
+							className=" absolute bottom-0 h-full w-full object-cover object-[90%_80%] "
+							alt="product-image"
 						/>
+						<h3 className=" relative p-4 font-semibold  ">
+							Youthful, radiant complexion.
+						</h3>
 					</div>
-					<div className="  relative h-full w-full  bg-sky-400">
+					<div className="  relative flex h-full  w-full flex-col items-center  justify-end bg-sky-400  text-center">
 						<img
 							src="/products/homepage-section-4-3.webp"
-							className="   absolute    h-full w-full max-w-full  object-cover "
-							alt=""
+							className=" absolute bottom-0 h-full w-full object-cover object-center "
+							alt="product-image"
 						/>
+						<h3 className=" relative p-4 font-semibold ">
+							Radiant skin, all year.
+						</h3>
 					</div>
 				</div>
 			</section>
-			<section className="lg:px-8 relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4  bg-slate-100   ">
+			<section className=" relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4 bg-slate-100 lg:px-16     ">
 				<h2 className=" w-full text-center">Quality without compromise</h2>
 				<div className=" mx-2 flex  w-full flex-col items-center justify-center gap-4 sm:mx-4 md:mx-0 md:flex-row md:rounded-none lg:rounded-[64px]">
 					<div className=" relative flex h-full w-full max-w-screen-mn flex-col items-center justify-center gap-2  text-center">

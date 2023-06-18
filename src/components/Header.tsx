@@ -1,24 +1,29 @@
+import { useViewportSize } from "@mantine/hooks";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import {
-  motion as m,
-  useMotionTemplate,
-  useScroll,
-  useTransform,
+	motion as m,
+	useMotionTemplate,
+	useScroll,
+	useTransform,
 } from "framer-motion";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { variants } from "../lib/cva";
 import Icons from "./Icons";
 import ToggleBtn from "./ToggleBtn";
 
 const Header: FC = () => {
-	const [open, setOpen] = useState(window.innerWidth > 768 ? true : false);
+	const { width } = useViewportSize();
+	const [open, setOpen] = useState(false);
 	const { scrollY } = useScroll();
 	const shadow = useTransform(
 		scrollY,
 		[0, window.innerHeight],
 		["none", "0 1px 3px 0 rgb(0 0 0 / 0.2)"]
 	);
+	useEffect(() => {
+		setOpen(width > 768 ? true : false);
+	}, [width]);
 	return (
 		<m.header
 			style={{ boxShadow: useMotionTemplate`${shadow}` }}
@@ -64,27 +69,29 @@ const Header: FC = () => {
 						</NavLink>
 					</div>
 					<Collapsible.Content asChild>
-						<div className=" flex h-72 w-full flex-col items-center  justify-evenly font-semibold text-stone-900  md:h-auto md:flex-row ">
-							<NavLink
-								className={({ isActive }) =>
-									` ${
-										isActive ? "text-primary-300 " : "text-black"
-									}  text-xl capitalize transition-colors duration-500 hover:text-primary-300`
-								}
-								to="/productspage"
-							>
-								products
-							</NavLink>
-							<NavLink
-								className={({ isActive }) =>
-									` ${
-										isActive ? "text-primary-300 " : "text-black"
-									}  text-xl capitalize transition-colors duration-500 hover:text-primary-300`
-								}
-								to="/about"
-							>
-								about us
-							</NavLink>
+						<div className=" flex h-72 w-full flex-col items-center justify-evenly pb-8  font-semibold text-stone-900 md:h-auto  md:flex-row md:pb-0 ">
+							<div className=" flex h-full flex-col justify-evenly gap-4 md:flex-row md:items-center">
+								<NavLink
+									className={({ isActive }) =>
+										` ${
+											isActive ? "text-primary-300 " : "text-black"
+										}  text-xl capitalize transition-colors duration-500 hover:text-primary-300`
+									}
+									to="/productspage"
+								>
+									products
+								</NavLink>
+								<NavLink
+									className={({ isActive }) =>
+										` ${
+											isActive ? "text-primary-300 " : "text-black"
+										}  text-xl capitalize transition-colors duration-500 hover:text-primary-300`
+									}
+									to="/about"
+								>
+									about us
+								</NavLink>
+							</div>
 							<a
 								href="#contact"
 								className={variants({

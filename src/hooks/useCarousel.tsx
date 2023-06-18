@@ -4,7 +4,14 @@ import { useMemo, useState } from "react";
 export function useCarousel(arrayLength: number, numOfSlides = 1) {
 	const [count, setCount] = useState(0);
 	const prevCount = usePrevious(count);
-	const dir = count > (prevCount ?? 0) ? 1 : -1;
+	const dir =
+		prevCount == 0 && count == arrayLength - 1
+			? -1
+			: prevCount == arrayLength - 1 && count == 0
+			? 1
+			: count > (prevCount ?? 0)
+			? 1
+			: -1;
 
 	const incr = () => {
 		if (count < arrayLength - 1) {
