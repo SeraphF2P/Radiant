@@ -27,7 +27,7 @@ const Header: FC = () => {
 	return (
 		<m.header
 			style={{ boxShadow: useMotionTemplate`${shadow}` }}
-			className="sticky top-0 z-40 w-full bg-stone-100  shadow  md:flex md:justify-between   "
+			className="sticky top-0 z-40 w-full bg-stone-100  shadow  md:flex md:justify-around   "
 		>
 			<Collapsible.Root open={open} onOpenChange={setOpen} asChild>
 				<>
@@ -64,12 +64,12 @@ const Header: FC = () => {
 							</ToggleBtn>
 						</Collapsible.Trigger>
 
-						<NavLink className=" relative h-10 w-40  " to="/">
-							<Icons.logo />
+						<NavLink className=" relative  " to="/">
+							<Icons.logo className=" h-10 w-40" />
 						</NavLink>
 					</div>
 					<Collapsible.Content asChild>
-						<div className=" flex h-72 w-full flex-col items-center justify-evenly pb-8  font-semibold text-stone-900 md:h-auto  md:flex-row md:pb-0 ">
+						<div className=" flex h-72 w-full flex-col items-center justify-evenly pb-8 font-semibold text-stone-900 md:h-auto  md:w-1/2 md:flex-row  md:justify-between md:pb-0 ">
 							<div className=" flex h-full flex-col justify-evenly gap-4 md:flex-row md:items-center">
 								<NavLink
 									className={({ isActive }) =>
