@@ -12,19 +12,21 @@ const Landing: FC = () => {
 	const { scrollYProgress } = useScroll();
 	const scale = useTransform(scrollYProgress, [0, 0.8], [80, 300]);
 	return (
-		<section className=" sticky top-0 w-full  h-[90vh] ">
+		<section className=" sticky top-0  h-[90vh] w-full     ">
 			<m.div
+				layout
+				layoutRoot
 				style={{
 					scale: useMotionTemplate`${scale}%`,
 				}}
-				className=" absolute inset-0 m-auto flex  overflow-hidden items-center justify-center   rounded-[64px]  bg-primary-50  duration-300  "
+				className=" absolute inset-0 -top-10 m-auto  flex  h-full max-h-[600px] min-h-[500px] w-full  items-center  justify-center overflow-hidden rounded-[64px]   bg-primary-300  bg-primary-50  duration-300  "
 			>
 				<video
 					autoPlay
 					muted
 					loop
-					className="  h-full w-full object-cover opacity-25  "
-					src="/lorem-ipsum.mp4"
+					className=" absolute inset-0  h-full w-full object-cover opacity-25  "
+					src={"/lorem-ipsum.mp4"}
 				></video>
 			</m.div>
 			<div className=" absolute inset-0 m-auto flex max-w-sm flex-col justify-center gap-4 px-8 ">

@@ -4,45 +4,9 @@ import Btn from "../components/Btn";
 import Modal from "../components/Modal";
 import { pageTransision } from "../lib/framer-motion-variants";
 import { formatCurrency } from "../lib/utile/formatters";
+import { products } from "../data.json";
+import Image from "../components/Image";
 
-const products = [
-	{
-		id: 1,
-		src: "https://picsum.photos/300/600?random=5.webp",
-		name: "Radiant Eye Cream",
-		price: 40,
-	},
-	{
-		id: 2,
-		src: "https://picsum.photos/300/600?random=6.webp",
-		name: "Radiant Renewal Night Cream",
-		price: 50,
-	},
-	{
-		id: 3,
-		src: "https://picsum.photos/300/600?random=7.webp",
-		name: "Radiant Glow Moisturizing Cream",
-		price: 30,
-	},
-	{
-		id: 4,
-		src: "https://picsum.photos/300/600?random=8.webp",
-		name: "Radiant Hydrating Serum",
-		price: 45,
-	},
-	{
-		id: 5,
-		src: "https://picsum.photos/300/600?random=9.webp",
-		name: "Radiant Firming Mask",
-		price: 35,
-	},
-	{
-		id: 6,
-		src: "https://picsum.photos/300/600?random=10.webp",
-		name: "Radiant Lip Treatment",
-		price: 25,
-	},
-];
 const ProductsPage: FC = () => {
 	return (
 		<m.main
@@ -57,9 +21,10 @@ const ProductsPage: FC = () => {
 			className="  bg-stone-100"
 		>
 			<section className=" sticky top-0  h-[90vh] w-full overflow-y-hidden ">
-				<img
-					className=" absolute left-0 top-0 h-full  w-full  object-cover opacity-25  "
-					src="/products/pmv-chamara-sCFL6R7loQk-unsplash.webp"
+				<Image
+					wrapperClassName=" absolute inset-0 w-full h-full opacity-25"
+					className=" absolute left-0 top-0 h-full  w-full  object-cover   "
+					src="products/pmv-chamara-sCFL6R7loQk-unsplash.webp"
 				/>
 				<div className=" absolute inset-0 m-auto flex max-w-screen-lg flex-col justify-center gap-4 px-8 text-center ">
 					<h1 className="  text-3xl sm:text-5xl">Our products catalogue</h1>
@@ -101,13 +66,12 @@ const ProductsPage: FC = () => {
 										<div className="pb-4 text-2xl font-semibold text-primary-300">
 											{formatCurrency(product.price)}
 										</div>
-										<div className=" relative h-80 w-full overflow-hidden rounded-md md:h-80">
-											<img
-												className="absolute h-full w-full max-w-full object-cover"
-												src={product.src}
-												alt={product.name}
-											/>
-										</div>
+										<Image
+											wrapperClassName="relative h-80 w-full overflow-hidden rounded-md md:h-80"
+											className="absolute h-full w-full max-w-full object-cover"
+											src={product.src}
+											alt={product.name}
+										/>
 										<div className=" flex w-full items-center justify-between pt-4">
 											<Btn
 												variant="fill"

@@ -6,45 +6,8 @@ import useCarousel from "../hooks/useCarousel";
 import { formatCurrency } from "../lib/utile/formatters";
 import { Link } from "react-router-dom";
 import { variants } from "../lib/cva";
-
-const products = [
-	{
-		id: 1,
-		src: "/products/ourproducts-product-1.webp",
-		name: "Radiant Eye Cream",
-		price: 40,
-	},
-	{
-		id: 2,
-		src: "/products/ourproducts-product-2.webp",
-		name: "Radiant Renewal Night Cream",
-		price: 50,
-	},
-	{
-		id: 3,
-		src: "/products/ourproducts-product-3.webp",
-		name: "Radiant Glow Moisturizing Cream",
-		price: 30,
-	},
-	{
-		id: 4,
-		src: "/products/ourproducts-product-4.webp",
-		name: "Radiant Hydrating Serum",
-		price: 45,
-	},
-	{
-		id: 5,
-		src: "/products/ourproducts-product-5.webp",
-		name: "Radiant Firming Mask",
-		price: 35,
-	},
-	{
-		id: 6,
-		src: "/products/ourproducts-product-6.webp",
-		name: "Radiant Lip Treatment",
-		price: 25,
-	},
-];
+import { products } from "../data.json";
+import Image from "../components/Image";
 const OurProducts: FC = () => {
 	const numOfCards =
 		window.innerWidth > 1024 ? 3 : window.innerWidth > 768 ? 2 : 1;
@@ -147,17 +110,16 @@ const OurProducts: FC = () => {
 								}}
 								className=" absolute inline-flex  max-h-full   flex-col justify-between gap-4  rounded-2xl bg-stone-50 p-8 shadow sm:p-12"
 							>
-								<h4 className="  h-[70px] ">{product.name}</h4>
+								<h4 className=" line-clamp-1 h-[70px] ">{product.name}</h4>
 								<div className=" text-2xl font-semibold text-primary-300">
 									{formatCurrency(product.price)}
 								</div>
-								<div className=" relative h-96 w-full overflow-hidden rounded-md md:h-80">
-									<img
-										className="absolute h-full w-full max-w-full object-cover"
-										src={product.src}
-										alt={product.name}
-									/>
-								</div>
+								<Image
+									wrapperClassName=" relative h-96 w-full overflow-hidden rounded-md md:h-80"
+									className="absolute h-full w-full max-w-full object-cover"
+									src={product.src}
+									alt={product.name}
+								/>
 								<div className=" flex w-full items-center justify-between">
 									<Btn variant="fill" className=" whitespace-nowrap px-4 py-2">
 										buy now

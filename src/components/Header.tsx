@@ -44,6 +44,7 @@ const Header: FC = () => {
 							>
 								{(isToggled) => (
 									<>
+										<span className=" sr-only">menu</span>
 										<div
 											className={`${
 												isToggled && "translate-y-1.5 rotate-45 "
@@ -64,14 +65,20 @@ const Header: FC = () => {
 							</ToggleBtn>
 						</Collapsible.Trigger>
 
-						<NavLink className=" relative  " to="/">
+						<NavLink
+							onClickCapture={() => window.scrollTo({ top: 0 })}
+							className=" relative  "
+							to="/"
+						>
 							<Icons.logo className=" h-10 w-40" />
+							<span className=" sr-only">hompage</span>
 						</NavLink>
 					</div>
 					<Collapsible.Content asChild>
 						<div className=" flex h-72 w-full flex-col items-center justify-evenly pb-8 font-semibold text-stone-900 md:h-auto  md:w-1/2 md:flex-row  md:justify-between md:pb-0 ">
 							<div className=" flex h-full flex-col justify-evenly gap-4 md:flex-row md:items-center">
 								<NavLink
+									onClickCapture={() => window.scrollTo({ top: 0 })}
 									className={({ isActive }) =>
 										` ${
 											isActive ? "text-primary-300 " : "text-black"
@@ -82,6 +89,7 @@ const Header: FC = () => {
 									products
 								</NavLink>
 								<NavLink
+									onClickCapture={() => window.scrollTo({ top: 0 })}
 									className={({ isActive }) =>
 										` ${
 											isActive ? "text-primary-300 " : "text-black"

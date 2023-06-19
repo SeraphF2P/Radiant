@@ -1,14 +1,9 @@
-import {motion as m} from "framer-motion";
+import { motion as m } from "framer-motion";
 import { FC } from "react";
 import Btn from "../components/Btn";
+import Image from "../components/Image";
+import { ourInstagram as images } from "../data.json";
 
-const images = [
-	"/products/homepage-ourinstagram-1.webp",
-	"/products/homepage-ourinstagram-2.webp",
-	"/products/homepage-ourinstagram-3.webp",
-	"/products/homepage-ourinstagram-4.jpg",
-	"/products/homepage-ourinstagram-5.webp",
-];
 const timer = 10;
 const spacing = 32;
 const cardWidth = 350;
@@ -41,7 +36,8 @@ const OurInstagram: FC = () => {
 								}}
 								className=" absolute left-0 h-80 w-[350px] overflow-hidden rounded-xl   bg-primary-300 "
 							>
-								<img
+								<Image
+									wrapperClassName=" absoulote inset-0 w-full h-full"
 									className="absoulote left-0 h-full w-full object-cover"
 									src={image}
 									alt=""

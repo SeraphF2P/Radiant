@@ -18,7 +18,7 @@ const HomePage: FC = () => {
 			style={{
 				willChange: "opacity",
 			}}
-			className=" min-h-screen  overflow-hidden bg-stone-100 "
+			className=" remove-scroll-bar h-screen overflow-hidden  overflow-y-scroll bg-stone-100 "
 		>
 			<Landing />
 			<section className=" relative flex min-h-[calc(100vh-72px)] w-full flex-col items-center justify-center gap-4 bg-slate-100 p-4  md:flex-row  lg:px-16  ">
@@ -72,8 +72,8 @@ const HomePage: FC = () => {
 			</section>
 			<OurProducts />
 			<section className=" relative flex min-h-[calc(100vh-72px)] items-center justify-center bg-slate-100 lg:px-16     ">
-				<div className=" mx-2 flex h-[80vh] w-full flex-col  overflow-hidden rounded-3xl bg-red-400 sm:mx-4 md:mx-0 md:flex-row md:rounded-none lg:rounded-[64px]">
-					<div className="relative flex h-full  w-full flex-col items-center   justify-end bg-green-400 text-center">
+				<div className=" mx-2 flex h-[80vh] w-full flex-col  overflow-hidden rounded-3xl  sm:mx-4 md:mx-0 md:flex-row md:rounded-none lg:rounded-[64px]">
+					<div className="relative flex h-full  w-full flex-col items-center   justify-end bg-primary-300 text-center">
 						<Image
 							wrapperClassName=" absolute inset-0"
 							src="products/homepage-section-4-1.webp"
@@ -84,7 +84,7 @@ const HomePage: FC = () => {
 							Elevate your beauty routine.
 						</h3>
 					</div>
-					<div className="  relative flex h-full  w-full flex-col items-center   bg-amber-400  text-center">
+					<div className="  relative flex h-full  w-full flex-col items-center   bg-primary-200   text-center">
 						<Image
 							wrapperClassName=" absolute inset-0"
 							src="products/homepage-section-4-2.webp"
@@ -95,7 +95,7 @@ const HomePage: FC = () => {
 							Youthful, radiant complexion.
 						</h3>
 					</div>
-					<div className="  relative flex h-full  w-full flex-col items-center  justify-end bg-sky-400  text-center">
+					<div className="  relative flex h-full  w-full flex-col items-center  justify-end bg-primary-300   text-center">
 						<Image
 							wrapperClassName=" absolute inset-0"
 							src="products/homepage-section-4-3.webp"

@@ -1,0 +1,47 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "src": "products/ourproducts-product-1.webp",
+      "name": "Radiant Eye Cream",
+      "price": 40
+    },
+    {
+      "id": 2,
+      "src": "products/ourproducts-product-2.webp",
+      "name": "Radiant Renewal Night Cream",
+      "price": 50
+    },
+    {
+      "id": 3,
+      "src": "products/ourproducts-product-3.webp",
+      "name": "Radiant Glow Moisturizing Cream",
+      "price": 30
+    },
+    {
+      "id": 4,
+      "src": "products/ourproducts-product-4.webp",
+      "name": "Radiant Hydrating Serum",
+      "price": 45
+    },
+    {
+      "id": 5,
+      "src": "products/ourproducts-product-5.webp",
+      "name": "Radiant Firming Mask",
+      "price": 35
+    },
+    {
+      "id": 6,
+      "src": "products/ourproducts-product-6.webp",
+      "name": "Radiant Lip Treatment",
+      "price": 25
+    }
+  ],
+  "ourInstagram": [
+    "products/homepage-ourinstagram-1.webp",
+    "products/homepage-ourinstagram-2.webp",
+    "products/homepage-ourinstagram-3.webp",
+    "products/homepage-ourinstagram-4.jpg",
+    "products/homepage-ourinstagram-5.webp"
+  ]
+}
