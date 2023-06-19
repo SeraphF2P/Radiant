@@ -4,22 +4,28 @@ import {
 	useScroll,
 	useTransform,
 } from "framer-motion";
-import { FC } from "react";
 import Btn from "../components/Btn";
 import Icons from "../components/Icons";
+const Landing = ({
+	container,
+}: {
+	container: React.MutableRefObject<null>;
+}) => {
+	const { scrollYProgress } = useScroll({
+		container: container,
+		layoutEffect: false,
+	});
+	const scale = useTransform(scrollYProgress, [0, 0.7], [80, 300]);
 
-const Landing: FC = () => {
-	const { scrollYProgress } = useScroll();
-	const scale = useTransform(scrollYProgress, [0, 0.8], [80, 300]);
 	return (
-		<section className=" sticky top-0  h-[90vh] w-full     ">
+		<section className=" sticky top-0 z-0  h-[90vh] w-full     ">
 			<m.div
 				layout
 				layoutRoot
 				style={{
 					scale: useMotionTemplate`${scale}%`,
 				}}
-				className=" absolute inset-0 -top-10 m-auto  flex  h-full max-h-[600px] min-h-[500px] w-full  items-center  justify-center overflow-hidden rounded-[64px]   bg-primary-300  bg-primary-50  duration-300  "
+				className=" absolute inset-0 -top-10 m-auto flex h-full  max-h-[600px]  min-h-[500px] w-full items-center justify-center  overflow-hidden  rounded-[64px] bg-primary-50 transition-transform    duration-300  ease-linear  "
 			>
 				<video
 					autoPlay
