@@ -6,6 +6,7 @@ import { pageTransision } from "../lib/framer-motion-variants";
 import Landing from "../sections/Landing";
 import OurInstagram from "../sections/OurInstagram";
 import OurProducts from "../sections/OurProducts";
+import Image from "../components/Image";
 const HomePage: FC = () => {
 	return (
 		<m.main
@@ -17,17 +18,17 @@ const HomePage: FC = () => {
 			style={{
 				willChange: "opacity",
 			}}
-			className="  overflow-hidden bg-stone-100 "
+			className=" min-h-screen  overflow-hidden bg-stone-100 "
 		>
 			<Landing />
 			<section className=" relative flex min-h-[calc(100vh-72px)] w-full flex-col items-center justify-center gap-4 bg-slate-100 p-4  md:flex-row  lg:px-16  ">
-				<div className=" relative h-72 w-full  overflow-hidden  rounded-[32px] bg-red-400 sm:h-[500px] md:w-1/3">
-					<img
-						className=" absolute h-full w-full object-cover"
-						src="/products/homepage-section-2.webp"
-						alt="product-image"
-					/>
-				</div>
+				<Image
+					wrapperClassName=" relative h-72 w-full  overflow-hidden  rounded-[32px] bg-red-400 sm:h-[500px] md:w-1/3"
+					className=" absolute h-full w-full object-cover"
+					src="products/homepage-section-2.webp"
+					alt="product-image"
+				/>
+
 				<div className="  flex w-full flex-col items-start gap-4 sm:h-[500px] sm:justify-around md:w-2/3">
 					<h2>
 						From supplements to skincare, we have everything you need to support
@@ -72,9 +73,10 @@ const HomePage: FC = () => {
 			<OurProducts />
 			<section className=" relative flex min-h-[calc(100vh-72px)] items-center justify-center bg-slate-100 lg:px-16     ">
 				<div className=" mx-2 flex h-[80vh] w-full flex-col  overflow-hidden rounded-3xl bg-red-400 sm:mx-4 md:mx-0 md:flex-row md:rounded-none lg:rounded-[64px]">
-					<div className="  relative flex h-full  w-full flex-col items-center   justify-end bg-green-400 text-center">
-						<img
-							src="/products/homepage-section-4-1.webp"
+					<div className="relative flex h-full  w-full flex-col items-center   justify-end bg-green-400 text-center">
+						<Image
+							wrapperClassName=" absolute inset-0"
+							src="products/homepage-section-4-1.webp"
 							alt="product-image"
 							className=" absolute bottom-0 h-full w-full object-cover object-[90%_80%] text-white "
 						/>
@@ -83,8 +85,9 @@ const HomePage: FC = () => {
 						</h3>
 					</div>
 					<div className="  relative flex h-full  w-full flex-col items-center   bg-amber-400  text-center">
-						<img
-							src="/products/homepage-section-4-2.webp"
+						<Image
+							wrapperClassName=" absolute inset-0"
+							src="products/homepage-section-4-2.webp"
 							className=" absolute bottom-0 h-full w-full object-cover object-[90%_80%] "
 							alt="product-image"
 						/>
@@ -93,8 +96,9 @@ const HomePage: FC = () => {
 						</h3>
 					</div>
 					<div className="  relative flex h-full  w-full flex-col items-center  justify-end bg-sky-400  text-center">
-						<img
-							src="/products/homepage-section-4-3.webp"
+						<Image
+							wrapperClassName=" absolute inset-0"
+							src="products/homepage-section-4-3.webp"
 							className=" absolute bottom-0 h-full w-full object-cover object-center "
 							alt="product-image"
 						/>
