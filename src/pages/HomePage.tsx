@@ -21,9 +21,9 @@ const HomePage: FC = () => {
 			className=" remove-scroll-bar h-screen overflow-hidden  overflow-y-scroll bg-stone-100 "
 		>
 			<Landing />
-			<section className=" relative flex min-h-[calc(100vh-72px)] w-full flex-col items-center justify-center gap-4 bg-slate-100 p-4  md:flex-row  lg:px-16  ">
+			<section className=" relative flex min-h-[calc(100vh-72px)] w-full flex-col items-center justify-center gap-4 bg-stone-100 p-4  md:flex-row  lg:px-16  ">
 				<Image
-					wrapperClassName=" relative h-72 w-full  overflow-hidden  rounded-[32px] bg-red-400 sm:h-[500px] md:w-1/3"
+					wrapperClassName=" relative h-72 w-full  overflow-hidden  rounded-[32px] bg-primary-100/50 sm:h-[500px] md:w-1/3"
 					className=" absolute h-full w-full object-cover"
 					src="products/homepage-section-2.webp"
 					alt="product-image"
@@ -43,11 +43,11 @@ const HomePage: FC = () => {
 					</p>
 					<Btn variant="fill" className=" capitalise gap-1 px-4 py-2">
 						read more
-						<Icons.rightArrow className=" h-6 w-6 fill-slate-50 " />
+						<Icons.rightArrow className=" h-6 w-6 fill-stone-50 " />
 					</Btn>
 				</div>
 			</section>
-			<section className=" relative flex flex-col items-center  justify-around gap-8 bg-slate-100  p-4 py-8  lg:px-16   ">
+			<section className=" relative flex flex-col items-center  justify-around gap-8 bg-stone-100  p-4 py-8  lg:px-16   ">
 				<blockquote className=" text-center">
 					"I would highly recommend the Radiant beauty product line to anyone
 					looking for high-quality, effective skincare products. They are truly
@@ -71,7 +71,7 @@ const HomePage: FC = () => {
 				<h3>Aria Patel</h3>
 			</section>
 			<OurProducts />
-			<section className=" relative flex min-h-[calc(100vh-72px)] items-center justify-center bg-slate-100 lg:px-16     ">
+			<section className=" relative flex min-h-[calc(100vh-72px)] items-center justify-center bg-stone-100 lg:px-16     ">
 				<div className=" mx-2 flex h-[80vh] w-full flex-col  overflow-hidden rounded-3xl  sm:mx-4 md:mx-0 md:flex-row md:rounded-none lg:rounded-[64px]">
 					<div className="relative flex h-full  w-full flex-col items-center   justify-end bg-primary-300 text-center">
 						<Image
@@ -108,7 +108,7 @@ const HomePage: FC = () => {
 					</div>
 				</div>
 			</section>
-			<section className=" relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4 bg-slate-100 lg:px-16     ">
+			<section className=" relative flex min-h-[calc(100vh-72px)] flex-col items-center justify-center gap-4 bg-stone-100 lg:px-16     ">
 				<h2 className=" w-full text-center">Quality without compromise</h2>
 				<div className=" mx-2 flex  w-full flex-col items-center justify-center gap-4 sm:mx-4 md:mx-0 md:flex-row md:rounded-none lg:rounded-[64px]">
 					<div className=" relative flex h-full w-full max-w-screen-mn flex-col items-center justify-center gap-2  text-center">
