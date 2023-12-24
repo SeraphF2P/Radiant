@@ -43,13 +43,13 @@ const Footer: FC = () => {
 							type="text"
 						/>
 						<textarea
-							className=" w-full  rounded-2xl border-none"
+							className=" w-full resize-none  rounded-2xl border-none"
 							placeholder="Your message"
 							name=""
 							id=""
 							cols={30}
 							rows={10}
-						></textarea>
+						/>
 
 						<Btn
 							variant="fill"

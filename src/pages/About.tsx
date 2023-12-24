@@ -20,7 +20,7 @@ const About = () => {
 		>
 			<section className=" sticky top-0   min-h-screen w-full overflow-y-hidden ">
 				<Image
-					wrapperClassName=" absolute  left-0 top-0 h-full  w-screen  object-cover opacity-25  "
+					wrapperClassName=" absolute  left-0 top-0 h-full w-full    object-cover opacity-25  "
 					className=" absolute  left-0 top-0 h-full  w-screen  object-cover "
 					src="products/ashley-piszek-i-oVwKgErJw-unsplash.webp"
 				/>

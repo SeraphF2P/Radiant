@@ -1,11 +1,10 @@
 import { motion as m } from "framer-motion";
 import { FC } from "react";
 import Btn from "../components/Btn";
-import Image from "../components/Image";
 import { ourInstagram as images } from "../data.json";
 
 const timer = 10;
-const spacing = 32;
+const spacing = 16;
 const cardWidth = 350;
 const containerWidth = 1000;
 const numOfSlides = images.length;
@@ -19,32 +18,32 @@ const OurInstagram: FC = () => {
 			<div className=" relative flex h-[60vh] w-full items-center overflow-hidden   ">
 				<div
 					style={{ width: sliderWidth }}
-					className="  relative  flex  items-center"
+					className="   relative  flex  items-center"
 				>
-					{images.map((image, index) => {
-						return (
-							<m.div
-								key={image}
-								initial={{ x: sliderWidth - fillerWidth }}
-								animate={{ x: -fillerWidth }}
-								transition={{
-									duration: timer,
-									ease: "linear",
-									repeat: Infinity,
-									repeatType: "loop",
-									delay: (index * timer) / numOfSlides,
-								}}
-								className=" absolute left-0 h-80 w-[350px] overflow-hidden rounded-xl   bg-primary-300 "
-							>
-								<Image
-									wrapperClassName=" absoulote inset-0 w-full h-full"
-									className="absoulote left-0 h-full w-full object-cover"
-									src={image}
-									alt=""
-								/>
-							</m.div>
-						);
-					})}
+					{images &&
+						images.map((image, index) => {
+							return (
+								<m.div
+									key={image}
+									initial={{ left: sliderWidth }}
+									animate={{ left: -fillerWidth }}
+									transition={{
+										duration: timer,
+										ease: "linear",
+										repeat: Infinity,
+										repeatType: "loop",
+										delay: (index * timer) / numOfSlides,
+									}}
+									className=" absolute left-0 h-80 w-[350px] overflow-hidden rounded-xl   bg-primary-300 "
+								>
+									<img
+										className="absoulote left-0 h-full w-full object-cover"
+										src={image}
+										alt=""
+									/>
+								</m.div>
+							);
+						})}
 				</div>
 				<div className=" pointer-events-none absolute left-0 top-0 h-full w-full bg-gradient-to-r from-stone-100 from-[1%] via-transparent  to-stone-100    to-[99%]"></div>
 			</div>

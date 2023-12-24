@@ -2,14 +2,12 @@ import { motion as m } from "framer-motion";
 import { FC } from "react";
 import Btn from "../components/Btn";
 import Icons from "../components/Icons";
+import Image from "../components/Image";
 import { pageTransision } from "../lib/framer-motion-variants";
 import Landing from "../sections/Landing";
 import OurInstagram from "../sections/OurInstagram";
 import OurProducts from "../sections/OurProducts";
-import Image from "../components/Image";
-import {useRef} from "react"
 const HomePage: FC = () => {
-  const container = useRef(null)
 	return (
 		<m.main
 			variants={pageTransision}
@@ -17,13 +15,12 @@ const HomePage: FC = () => {
 			animate="animate"
 			exit="exit"
 			key="home page"
-      ref={container}
 			style={{
 				willChange: "opacity",
 			}}
-			className=" remove-scroll-bar h-screen overflow-hidden  overflow-y-scroll bg-stone-100 "
+			className="  relative  bg-stone-100 "
 		>
-			<Landing container={container} />
+			<Landing />
 			<section className=" relative flex min-h-[calc(100vh-72px)] w-full flex-col items-center justify-center gap-4 bg-stone-100 p-4  md:flex-row  lg:px-16  ">
 				<Image
 					wrapperClassName=" relative h-72 w-full  overflow-hidden  rounded-[32px] bg-primary-100/50 sm:h-[500px] md:w-1/3"
@@ -68,7 +65,7 @@ const HomePage: FC = () => {
 					<img
 						className=" absolute h-full w-full object-cover"
 						src="https://picsum.photos/200/200.webp"
-						alt="product-image"
+						alt="profile-image"
 					/>
 				</div>
 				<h3>Aria Patel</h3>

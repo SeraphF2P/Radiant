@@ -1,13 +1,13 @@
 import { useResizeObserver } from "@mantine/hooks";
 import { AnimatePresence, motion as m } from "framer-motion";
 import { FC, useState } from "react";
-import Btn from "../components/Btn";
-import useCarousel from "../hooks/useCarousel";
-import { formatCurrency } from "../lib/utile/formatters";
 import { Link } from "react-router-dom";
-import { variants } from "../lib/cva";
+import Btn from "../components/Btn";
 import { products } from "../data.json";
-import Image from "../components/Image";
+import useCarousel from "../hooks/useCarousel";
+import { variants } from "../lib/cva";
+import { formatCurrency } from "../lib/utile/formatters";
+
 const OurProducts: FC = () => {
 	const numOfCards =
 		window.innerWidth > 1024 ? 3 : window.innerWidth > 768 ? 2 : 1;
@@ -114,12 +114,14 @@ const OurProducts: FC = () => {
 								<div className=" text-2xl font-semibold text-primary-300">
 									{formatCurrency(product.price)}
 								</div>
-								<Image
-									wrapperClassName=" relative h-96 w-full overflow-hidden rounded-md md:h-80"
-									className="absolute h-full w-full max-w-full object-cover"
-									src={product.src}
-									alt={product.name}
-								/>
+
+								<div className=" relative h-96 w-full overflow-hidden rounded-md md:h-80">
+									<img
+										className="absolute h-full w-full max-w-full object-cover"
+										src={product.src}
+										alt={product.name}
+									/>
+								</div>
 								<div className=" flex w-full items-center justify-between">
 									<Btn variant="fill" className=" whitespace-nowrap px-4 py-2">
 										buy now

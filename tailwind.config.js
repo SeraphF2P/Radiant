@@ -31,6 +31,8 @@ module.exports = {
       },
       animation: {
         reset: "reset var(--reset-duration) infinite var(--reset-delay)",
+        slideDown: "slideDown 0.3s forwards linear  ",
+        slideUp: "slideUp 0.3s forwards linear  ",
       },
       keyframes: {
         reset: {
@@ -43,6 +45,22 @@ module.exports = {
               "translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));",
           },
         },
+        slideDown: {
+          from: {
+            height: "0"
+          },
+          to: {
+            height: "var(--radix-collapsible-content-height)"
+          }
+        }
+        , slideUp: {
+          from: {
+            height: "var(--radix-collapsible-content-height)"
+          },
+          to: {
+            height: "0"
+          }
+        }
       },
 
     },

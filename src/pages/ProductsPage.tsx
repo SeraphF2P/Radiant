@@ -43,7 +43,7 @@ const ProductsPage: FC = () => {
 				<m.ul
 					layout
 					layoutRoot
-					className=" remove-scroll-bar flex  h-screen w-full  flex-wrap items-center justify-center gap-8  overflow-y-scroll pb-4   lg:px-8   "
+					className=" flex  h-screen w-full  flex-wrap items-center justify-center gap-8  overflow-y-scroll pb-4   lg:px-8   "
 				>
 					<AnimatePresence>
 						{products &&

@@ -6,14 +6,20 @@ import {
 } from "framer-motion";
 import { cn, variants } from "../lib/cva";
 import Icons from "./Icons";
+import { useRef } from "react";
 
 const ScrollToTopBtn = () => {
-	const { scrollY } = useScroll();
+	const container = useRef(document.getElementById("root"));
+	const { scrollY } = useScroll({
+		container,
+	});
 	const opacity = useTransform(scrollY, [0, window.innerHeight], [0, 1]);
 	return (
 		<m.a
 			onClick={() => {
-				window.scrollTo({ top: 0, behavior: "smooth" });
+				if (container.current) {
+					container.current.scrollTo({ top: 0, behavior: "smooth" });
+				}
 			}}
 			style={{
 				opacity: useMotionTemplate`${opacity}`,
